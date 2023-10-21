@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Bubbles : MonoBehaviour
 {
@@ -11,9 +12,10 @@ public class Bubbles : MonoBehaviour
 
     public float spawnSpeed = 0.5f;
     public float spawnTimer = 0f;
-    private float rarity;
 
     public char key;
+
+    public TextMeshProUGUI key_to_press;
 
 
     void Start()
@@ -23,7 +25,8 @@ public class Bubbles : MonoBehaviour
         int indice = Random.Range(0, 26);
         key = (char)('A' + indice);
         Debug.Log("Letra aleatoria: " + key);
-
+        string key_string = key.ToString();
+        key_to_press.text = key_string;
 
     }
 
@@ -43,21 +46,6 @@ public class Bubbles : MonoBehaviour
     public void Spawn()
     {
         wavyness = Random.Range(-1f, 1f);
-        //rarity = Random.Range(0f, 1f);
-
-        //if (rarity < 0.5)
-        //{
-        //    wavyness = 0;
-        //}
-
-        //else if (rarity >= 0.5 && rarity < 0.75)
-        //{
-        //    wavyness = 1f;
-        //}
-
-        //else if (rarity >= 0.75)
-        //{
-        //    wavyness = -1f;
-        //}
+       
     }
 }
