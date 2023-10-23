@@ -132,6 +132,8 @@ MonoBehaviour:
   spawnTimer: 0
   key: 0
   key_to_press: {fileID: 5552676950310918383}
+  gameManager: {fileID: 0}
+  white: 1
 --- !u!58 &4295123251396379610
 CircleCollider2D:
   m_ObjectHideFlags: 0

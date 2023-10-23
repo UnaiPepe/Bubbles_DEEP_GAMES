@@ -16,8 +16,8 @@ public class Bubbles : MonoBehaviour
     public char key;
 
     public TextMeshProUGUI key_to_press;
-
     public GameManager gameManager;
+    public bool white;
 
 
     void Start()
@@ -25,6 +25,12 @@ public class Bubbles : MonoBehaviour
 
         gameManager = FindObjectOfType<GameManager>();
         gameManager.FindBubbles();
+
+        if(white)
+        {
+            this.gameObject.transform.localScale = this.gameObject.transform.localScale * gameManager.size;
+        }
+
         rb2d = this.gameObject.GetComponent<Rigidbody2D>();
         
         int indice = Random.Range(0, 26);
@@ -35,7 +41,6 @@ public class Bubbles : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb2d.velocity = new Vector2(wavyness, speed);

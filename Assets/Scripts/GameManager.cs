@@ -13,12 +13,8 @@ public class GameManager : MonoBehaviour
 
     public string key_pressed;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float size = 1f;
+    public float rarity = 0.25f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -49,7 +45,7 @@ public class GameManager : MonoBehaviour
         {
             if (Event.current.isKey && Event.current.type == EventType.KeyDown)
             {
-                Debug.Log(Event.current.keyCode);
+                //Debug.Log(Event.current.keyCode);
                 key_pressed = Event.current.keyCode.ToString();
                 can_press = false;
                 DestroyBubbles();
@@ -74,6 +70,15 @@ public class GameManager : MonoBehaviour
                 if (key_from_bubble == key_pressed)
                 {
                     is_killed = true;
+                    if(buble.GetComponent<Bubbles>().white == true)
+                    {
+                        size -= 0.25f;
+                    }
+                    else if (buble.GetComponent<Bubbles>().white == false)
+                    {
+                        size += 0.15f;
+                        rarity += 0.1f;
+                    }
                     Destroy(buble);
                 }
             }
@@ -82,57 +87,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-
-    public void Destroy_Key()
-    {
-        foreach(GameObject bubble in bubbles)
-        {
-            //bubble.gameObject.GetComponent<Bubbles>().key_to_press;
-        }
-    }
-
     private void shit_dump()
     {
-        //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.C))
-        //{
-
-        //}
-
-        //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-        //{
-        //    if (Input.GetKey(kcode))
-        //        Debug.Log("KeyCode down: " + kcode);
-        //}
-
-
-        //for (char letra = 'A'; letra <= 'Z'; letra++)
-        //{
-        //    // Convierte el char a KeyCode (por ejemplo, 'A' a KeyCode.A).
-        //    KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), letra.ToString());
-
-        //    // Verifica si la tecla correspondiente ha sido presionada.
-        //    if (Input.GetKeyDown(keyCode))
-        //    {
-        //        // Realiza acciones cuando el jugador pulsa una tecla del alfabeto.
-        //        Debug.Log("¡El jugador ha pulsado la tecla " + letra + "!");
-        //    }
-        //}
-
-        //// Itera a través de las letras desde 'A' hasta 'Z'.
-        //for (char letra = 'A'; letra <= 'Z'; letra++)
-        //{
-        //    // Convierte el char a KeyCode (por ejemplo, 'A' a KeyCode.A).
-        //    KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), letra.ToString());
-
-        //    // Verifica si la tecla correspondiente ha sido presionada.
-        //    if (Input.GetKeyDown(keyCode))
-        //    {
-        //        // Realiza acciones cuando el jugador pulsa una tecla del alfabeto.
-        //        Debug.Log("¡El jugador ha pulsado la tecla " + letra + "!");
-        //    }
-        //}
+       
 
     }
 

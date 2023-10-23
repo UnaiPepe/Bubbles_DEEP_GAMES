@@ -12,11 +12,13 @@ public class Spawner : MonoBehaviour
     public Collider2D area;
     public float spawnSpeed = 1f;
     public float spawnTimer = 0f;
-    public float rarity;
+    
+
 
     public void Start()
     {
         gameManager = GameObject.Find("GameManager");
+
         area = this.GetComponent<Collider2D>();
 
     }
@@ -41,14 +43,16 @@ public class Spawner : MonoBehaviour
         float randomY = Random.Range(area.bounds.min.y, area.bounds.max.y);
 
         Vector2 spawnPosition = new Vector2(randomX, randomY);
-        rarity = Random.Range(0f, 1f);
+        float random= Random.Range(0f, 1f);
 
-        if (rarity < 0.75)
+        if (random < 1 - gameManager.GetComponent<GameManager>().rarity)
         {
             Instantiate(bubble, spawnPosition, Quaternion.identity);
+
         }
 
-        else if (rarity >= 0.75)
+        else if (random >= 1 - gameManager.GetComponent<GameManager>().rarity)
+
         {
             Instantiate(black_bubble, spawnPosition, Quaternion.identity);
         }
