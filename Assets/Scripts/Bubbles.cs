@@ -17,14 +17,19 @@ public class Bubbles : MonoBehaviour
 
     public TextMeshProUGUI key_to_press;
 
+    public GameManager gameManager;
+
 
     void Start()
     {
+
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.FindBubbles();
         rb2d = this.gameObject.GetComponent<Rigidbody2D>();
         
         int indice = Random.Range(0, 26);
         key = (char)('A' + indice);
-        Debug.Log("Letra aleatoria: " + key);
+        //Debug.Log("Letra aleatoria: " + key);
         string key_string = key.ToString();
         key_to_press.text = key_string;
 
@@ -39,11 +44,11 @@ public class Bubbles : MonoBehaviour
         if (spawnTimer >= spawnSpeed)
         {
             spawnTimer = 0f;
-            Spawn();
+            Move();
         }
     }
 
-    public void Spawn()
+    public void Move()
     {
         wavyness = Random.Range(-1f, 1f);
        
