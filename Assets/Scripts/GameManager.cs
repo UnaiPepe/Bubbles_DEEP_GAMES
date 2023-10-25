@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     public float size = 1f;
     public float rarity = 0.25f;
 
+    //Progress Bar
+
+    public float progress = 0f;
+
+    public GameObject Bar;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -73,12 +79,27 @@ public class GameManager : MonoBehaviour
                     if(buble.GetComponent<Bubbles>().white == true)
                     {
                         size -= 0.25f;
+
+                        progress -= 0.25f;
+                        if(progress <= 0)
+                        {
+                            progress = 0.1f;
+                        }
+
+                        else if (progress == 1f)
+                        {
+                            //LOAD WIN
+                        }
+
+                        Grow();
                     }
                     else if (buble.GetComponent<Bubbles>().white == false)
                     {
+                        progress += 0.15f;
                         size += 0.15f;
                         rarity += 0.1f;
                     }
+                    
                     Destroy(buble);
                 }
             }
@@ -87,10 +108,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void shit_dump()
+    public void Grow()
     {
-       
 
+        Vector3 newScale = Bar.transform.localScale;
+        newScale.x = progress;
+        Bar.transform.localScale = newScale;
     }
 
 
