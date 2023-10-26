@@ -58,4 +58,12 @@ public class Bubbles : MonoBehaviour
         wavyness = Random.Range(-1f, 1f);
        
     }
+
+    public void UpdateSize()
+    {
+        if(white)
+        {
+            this.gameObject.transform.localScale = this.gameObject.transform.localScale * gameManager.size;
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     //Progress Bar
 
-    public float progress = 0f;
+    public float progress = 0.25f;
 
     public GameObject Bar;
 
@@ -78,33 +78,33 @@ public class GameManager : MonoBehaviour
                     is_killed = true;
                     if(buble.GetComponent<Bubbles>().white == true)
                     {
-                        size -= 0.25f;
+                        size = 0.85f;
 
-                        progress -= 0.25f;
+                        progress -= 0.15f;
                         if(progress <= 0)
                         {
-                            progress = 0.1f;
+                            progress = 0.05f;
                         }
 
-                        else if (progress == 1f)
+                        else if (progress >= 1f)
                         {
                             //LOAD WIN
                         }
-
+                       
                         Grow();
                     }
                     else if (buble.GetComponent<Bubbles>().white == false)
                     {
-                        progress += 0.15f;
-                        size += 0.15f;
+                        progress += 0.1f;
+                        size = 1.1f;
                         rarity += 0.1f;
                     }
                     
                     Destroy(buble);
                 }
             }
-            
-            
+            buble.GetComponent<Bubbles>().UpdateSize();
+
         }
     }
 
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
     {
 
         Vector3 newScale = Bar.transform.localScale;
-        newScale.x = progress;
+        newScale.x += progress;
         Bar.transform.localScale = newScale;
     }
 
