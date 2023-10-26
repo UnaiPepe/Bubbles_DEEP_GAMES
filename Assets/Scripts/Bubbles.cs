@@ -7,7 +7,7 @@ public class Bubbles : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
-    public float speed = 1;
+    public float speed = 10;
     public float wavyness = 0;
 
     public float spawnSpeed = 0.5f;

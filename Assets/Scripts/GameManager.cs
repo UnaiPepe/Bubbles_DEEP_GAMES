@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] bubbles;
 
     public float check_timer = 0f;
-    public float check_cooldown = 1f;
+    public float check_cooldown = 0.25f;
     public bool can_press = false;
 
     public string key_pressed;
@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
                     {
                         size = 0.85f;
 
-                        progress -= 0.15f;
-                        if(progress <= 0)
+                        progress -= 0.1f;  //TWEAK AND PLAY WITH THIS. BASE WAS -= 0.15f;
+                        if (progress <= 0)
                         {
                             progress = 0.05f;
                         }
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if (buble.GetComponent<Bubbles>().white == false)
                     {
-                        progress += 0.1f;
+                        progress += 0.05f;   //TWEAK AND PLAY WITH THIS. BASE WAS += 0.1f;
                         size = 1.1f;
                         rarity += 0.1f;
                     }
