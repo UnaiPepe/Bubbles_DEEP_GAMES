@@ -25,11 +25,23 @@ public class GameManager : MonoBehaviour
     //Background 
 
     public SpriteRenderer white_background;
-    private float new_alpha = 1f;
 
     // Music Background
+    public soundManager SoundManager;
     public AudioSource backgroundmusic; // Referencia al componente AudioSource.
     public float FadeOutSpeed = 0.5f;
+
+    //Resting 
+
+    public bool isResting = false;
+    public float Time_to_rest = 5f;
+    public float resting_timer = 0f;
+    
+
+    private void Start()
+    {
+        SoundManager = FindObjectOfType<soundManager>();
+    }
 
 
     // Update is called once per frame
@@ -76,6 +88,25 @@ public class GameManager : MonoBehaviour
             Debug.Log("REDUCED ALPHA 2");
         }
 
+        if(isResting)
+        {
+            resting_timer += Time.deltaTime;
+
+            if (resting_timer >= 3f && resting_timer < 5f)
+            {
+                progress = 0.15f;
+                size = 1.1f;
+                SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 0.5f, 1f * Time.deltaTime);
+            }
+
+            if (resting_timer >= 5f)
+            {
+                progress = 0.25f;
+                size = 1.25f;
+                SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 1f, 1f * Time.deltaTime);
+            }
+        }
+
 
     }
 
@@ -100,10 +131,11 @@ public class GameManager : MonoBehaviour
                     if(buble.GetComponent<Bubbles>().white == true)
                     {
                         size = 0.85f;
-
+                        SoundManager.game_soundrack.volume = SoundManager.game_soundrack.volume * 0.75f;
                         progress -= 0.1f;  //TWEAK AND PLAY WITH THIS. BASE WAS -= 0.15f;
                         if (progress <= 0)
                         {
+                            SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 0.1f, 0.5f * Time.deltaTime);
                             progress = 0.05f;
                         }
 
@@ -138,23 +170,23 @@ public class GameManager : MonoBehaviour
         Bar.transform.localScale = newScale;
     }
 
-    public void Change_Background()
-    {
+    //public void Change_Background()
+    //{
 
-        if (progress <= 0.05f)
-        {
-            new_alpha = 0f;
-        }
-        else if (progress >= 0.05f && progress <= 0.2f)
-        {
-            new_alpha = 0.5f;
-        }
-        else if (progress >= 0.2f)
-        {
-            new_alpha = 1f;
-        }
+    //    if (progress <= 0.05f)
+    //    {
+    //        new_alpha = 0f;
+    //    }
+    //    else if (progress >= 0.05f && progress <= 0.2f)
+    //    {
+    //        new_alpha = 0.5f;
+    //    }
+    //    else if (progress >= 0.2f)
+    //    {
+    //        new_alpha = 1f;
+    //    }
 
-    }
+    //}
 
     public void FindBubbles()
     {
@@ -174,6 +206,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void Resting()
+    {
+        isResting = true;
     }
 
 }

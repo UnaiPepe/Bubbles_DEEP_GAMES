@@ -17,16 +17,26 @@ public class soundManager : MonoBehaviour
 
     public AudioSource hands_brown_noise;
     public AudioSource game_soundrack;
-    
 
 
-    // Start is called before the first frame update
+
+    //Start is called before the first frame update
     void Start()
     {
         musicManager = FindObjectOfType<soundManager>();
 
         DontDestroyOnLoad(musicManager);
     }
+   
+    //public void DecreaseBackground()
+    //{
+    //    game_soundrack
+    //}
+
+    //public void IncreaseBackground()
+    //{
+
+    //}
 
     public void ButtonClick()
     {

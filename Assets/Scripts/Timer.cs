@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
         if(timer <= 0)
         {
             timer = 0;
+            SceneManager.LoadScene("3_YouLost");
         }
     }
 }
