@@ -8,15 +8,13 @@ public class MainMenu : MonoBehaviour
    
 
 {
-    public Animator animator;
+
     private int levelToLoad;
+    
     public void PlayGame(int levelIndex)
     {
-        levelToLoad = levelIndex;
-        animator.SetTrigger("FadeOut");
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
       
     }
 
