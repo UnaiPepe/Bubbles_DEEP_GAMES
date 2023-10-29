@@ -32,6 +32,7 @@ public class hands_sequence : MonoBehaviour
 
         if (buttonPress == true)
         {
+
             anim.SetBool("animGo", true);
         }
         else
