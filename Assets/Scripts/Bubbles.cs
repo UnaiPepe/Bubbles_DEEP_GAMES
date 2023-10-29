@@ -24,7 +24,7 @@ public class Bubbles : MonoBehaviour
 
     void Start()
     {
-
+        
         gameManager = FindObjectOfType<GameManager>();
         gameManager.FindBubbles();
 

@@ -15,7 +15,6 @@ public class soundManager : MonoBehaviour
 
    [Header("Anything longer than 10 seconds")]
 
-    public AudioSource menu_soundtrack;
     public AudioSource hands_brown_noise;
     public AudioSource game_soundrack;
     
@@ -26,13 +25,14 @@ public class soundManager : MonoBehaviour
     {
         musicManager = FindObjectOfType<soundManager>();
 
-        //DontDestroyOnLoad(musicManager);
+        DontDestroyOnLoad(musicManager);
     }
 
     public void ButtonClick()
     {
         button_click.Play();
         //attackSound.PlayOneShot(attackSound, 0f);
+        
     }
 
     public void WhiteBubblePop()
@@ -48,11 +48,6 @@ public class soundManager : MonoBehaviour
     public void HandsAnimation()
     {
         hands_animation.Play();
-    }
-
-    public void MenuSoundtrack()
-    {
-        menu_soundtrack.Play();
     }
 
     public void Level_Ost()
