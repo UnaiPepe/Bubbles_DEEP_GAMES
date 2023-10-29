@@ -16,5 +16,10 @@ public class Timer : MonoBehaviour
         int timer_rounded = Mathf.RoundToInt(timer);
         string timer_in_string = timer_rounded.ToString();
         timer_text.text = timer_in_string;
+
+        if(timer <= 0)
+        {
+            timer = 0;
+        }
     }
 }

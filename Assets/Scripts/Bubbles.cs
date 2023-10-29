@@ -19,6 +19,8 @@ public class Bubbles : MonoBehaviour
     public GameManager gameManager;
     public bool white;
 
+    public bool ChangeSize = false;
+
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class Bubbles : MonoBehaviour
         string key_string = key.ToString();
         key_to_press.text = key_string;
 
+       
     }
 
     void FixedUpdate()
@@ -51,7 +54,18 @@ public class Bubbles : MonoBehaviour
             spawnTimer = 0f;
             Move();
         }
+
+        if (white && ChangeSize)
+        {
+            ChangeSize = false;
+            this.gameObject.transform.localScale = new Vector3(Mathf.Lerp(this.gameObject.transform.localScale.x, (this.gameObject.transform.localScale.x * gameManager.size), 1 * Time.deltaTime), Mathf.Lerp(this.gameObject.transform.localScale.y, (this.gameObject.transform.localScale.y * gameManager.size), 1 * Time.deltaTime), this.gameObject.transform.localScale.z);
+            //this.gameObject.transform.localScale = this.gameObject.transform.localScale * gameManager.size;
+        }
+
+        
     }
+
+    
 
     public void Move()
     {
@@ -61,9 +75,9 @@ public class Bubbles : MonoBehaviour
 
     public void UpdateSize()
     {
-        if(white)
-        {
-            this.gameObject.transform.localScale = this.gameObject.transform.localScale * gameManager.size;
-        }
+        ChangeSize = true;
+       
     }
+
+    
 }

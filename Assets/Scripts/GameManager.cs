@@ -22,6 +22,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject Bar;
 
+    //Background 
+
+    public SpriteRenderer white_background;
+    private float new_alpha = 1f;
+
+    // Music Background
+    public AudioSource backgroundmusic; // Referencia al componente AudioSource.
+    public float FadeOutSpeed = 0.5f;
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -38,27 +48,38 @@ public class GameManager : MonoBehaviour
             can_press = true;
         }
 
-    }
-
-    public void FindBubbles()
-    {
-        bubbles = GameObject.FindGameObjectsWithTag("Bubble");
-    }
-
-    void OnGUI()
-    {
-        if(can_press == true)
+        //Background changing color
+        if(progress > 0.2f) //Original Alpha
         {
-            if (Event.current.isKey && Event.current.type == EventType.KeyDown)
-            {
-                //Debug.Log(Event.current.keyCode);
-                key_pressed = Event.current.keyCode.ToString();
-                can_press = false;
-                DestroyBubbles();
-            }
+            Color colorActual = white_background.color;
+            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 255);
+            white_background.color = nuevoColor;
+            
         }
-        
+
+        if (progress > 0.05f && progress <= 0.2f) //First Alpha Reduction
+        {
+            Color colorActual = white_background.color;
+            float nuevoAlpha = Mathf.Lerp(colorActual.a, 20, 1f * Time.deltaTime);
+            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, nuevoAlpha);
+            white_background.color = nuevoColor;
+            Debug.Log("REDUCED ALPHA 1");
+        }
+
+        if (progress <= 0.05f) //Second Alpha Reduction
+        {
+            Color colorActual = white_background.color;
+            float nuevoAlpha = Mathf.Lerp(colorActual.a, 0, 1f * Time.deltaTime);
+            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, nuevoAlpha);
+            white_background.color = nuevoColor;
+
+            Debug.Log("REDUCED ALPHA 2");
+        }
+
+
     }
+
+   
 
     public void DestroyBubbles()
     {
@@ -86,8 +107,9 @@ public class GameManager : MonoBehaviour
                             progress = 0.05f;
                         }
 
-                        else if (progress >= 1f)
+                        else if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
                         {
+                            
                             //LOAD WIN
                         }
                        
@@ -116,5 +138,42 @@ public class GameManager : MonoBehaviour
         Bar.transform.localScale = newScale;
     }
 
+    public void Change_Background()
+    {
+
+        if (progress <= 0.05f)
+        {
+            new_alpha = 0f;
+        }
+        else if (progress >= 0.05f && progress <= 0.2f)
+        {
+            new_alpha = 0.5f;
+        }
+        else if (progress >= 0.2f)
+        {
+            new_alpha = 1f;
+        }
+
+    }
+
+    public void FindBubbles()
+    {
+        bubbles = GameObject.FindGameObjectsWithTag("Bubble");
+    }
+
+    void OnGUI()
+    {
+        if (can_press == true)
+        {
+            if (Event.current.isKey && Event.current.type == EventType.KeyDown)
+            {
+                //Debug.Log(Event.current.keyCode);
+                key_pressed = Event.current.keyCode.ToString();
+                can_press = false;
+                DestroyBubbles();
+            }
+        }
+
+    }
 
 }
