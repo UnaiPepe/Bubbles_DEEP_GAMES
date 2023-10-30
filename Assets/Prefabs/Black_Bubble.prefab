@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3174bcf9e2f714a4490d68a334721041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   wavyness: 0
   spawnSpeed: 1
   spawnTimer: 0
