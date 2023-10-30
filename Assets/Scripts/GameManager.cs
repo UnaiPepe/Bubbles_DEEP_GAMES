@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SoundManager = FindObjectOfType<soundManager>();
+        //Color colorActual = white_background.color;
+        //Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 120);
+        //white_background.color = nuevoColor;
+        white_background.color = new Color(white_background.color.r, white_background.color.g, white_background.color.b, 120);
     }
 
 
@@ -65,7 +69,7 @@ public class GameManager : MonoBehaviour
         if(progress > 0.2f) //Original Alpha
         {
             Color colorActual = white_background.color;
-            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 80f);
+            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 120);
             white_background.color = nuevoColor;
             
         }
@@ -119,6 +123,8 @@ public class GameManager : MonoBehaviour
 
         is_killed = false;
 
+        FindBubbles();
+
         foreach (GameObject buble in bubbles)
         {
             string key_from_bubble;
@@ -143,7 +149,7 @@ public class GameManager : MonoBehaviour
                         else if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
                         {
                             
-                            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3); //LOAD WIN
+                            SceneManager.LoadScene("4_YouWon"); //LOAD WIN
                         }
                        
                         Grow();

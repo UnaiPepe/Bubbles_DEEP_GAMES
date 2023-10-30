@@ -9,6 +9,8 @@ public class hands_sequence : MonoBehaviour
 
     public GameObject GameManager;
 
+    public Canvas canvas_UI;
+
     private void Start()
     {
         GameManager = GameObject.Find("GameManager");
@@ -20,13 +22,14 @@ public class hands_sequence : MonoBehaviour
         {
             buttonPress = true;
             GameManager.GetComponent<GameManager>().isResting = true;
+            canvas_UI.GetComponent<Canvas>().enabled = false;
         }
         else
         {
             buttonPress = false;
             GameManager.GetComponent<GameManager>().isResting = false;
             GameManager.GetComponent<GameManager>().resting_timer = 0f;
-
+            canvas_UI.GetComponent<Canvas>().enabled = true;
 
         }
 
