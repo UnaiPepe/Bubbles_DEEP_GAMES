@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         if(progress > 0.2f) //Original Alpha
         {
             Color colorActual = white_background.color;
-            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 255);
+            Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, 80f);
             white_background.color = nuevoColor;
             
         }
