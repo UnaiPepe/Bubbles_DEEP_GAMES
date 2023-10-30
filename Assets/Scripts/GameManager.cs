@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -142,7 +143,7 @@ public class GameManager : MonoBehaviour
                         else if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
                         {
                             
-                            //LOAD WIN
+                            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3); //LOAD WIN
                         }
                        
                         Grow();
