@@ -21,4 +21,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log("You quitteded");
         Application.Quit();
     }
+
+    public void RetryGame()
+    {
+        
+        SceneManager.LoadScene("2_Tutorial");
+    }
 }
