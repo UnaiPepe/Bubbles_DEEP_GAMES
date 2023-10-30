@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame(int levelIndex)
     {
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("2_Tutorial");
         sm.ButtonClick();
     }
 
