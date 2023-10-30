@@ -922,7 +922,7 @@ MonoBehaviour:
   bubble: {fileID: 2560964599260242365, guid: 935a5b1b08e6f3c4ead5a7c9e4667bcd, type: 3}
   black_bubble: {fileID: 2529021064513257384, guid: 86b17e8c5538a294580b749401fc7622, type: 3}
   area: {fileID: 0}
-  spawnSpeed: 0.5
+  spawnSpeed: 0.75
   spawnTimer: 0
 --- !u!61 &1292016054
 BoxCollider2D:
