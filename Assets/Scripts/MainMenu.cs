@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         
         SceneManager.LoadScene("2_Tutorial");
         sm.ButtonClick();
-    }
+    }   
 
     public void QuitGame()
     {

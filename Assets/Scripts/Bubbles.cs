@@ -57,8 +57,8 @@ public class Bubbles : MonoBehaviour
 
         if (white && ChangeSize)
         {
-            Debug.Log("Smaller");
-            this.gameObject.transform.localScale = new Vector3(Mathf.Lerp(this.gameObject.transform.localScale.x, (this.gameObject.transform.localScale.x * gameManager.size), 1f * Time.deltaTime), Mathf.Lerp(this.gameObject.transform.localScale.y, (this.gameObject.transform.localScale.y * gameManager.size), 1f * Time.deltaTime), this.gameObject.transform.localScale.z);
+            //Debug.Log("Smaller");
+            this.gameObject.transform.localScale = new Vector3(Mathf.Lerp(this.gameObject.transform.localScale.x, (this.gameObject.transform.localScale.x * gameManager.size), 0.5f), Mathf.Lerp(this.gameObject.transform.localScale.y, (this.gameObject.transform.localScale.y * gameManager.size), 0.5f), this.gameObject.transform.localScale.z);
             ChangeSize = false;
             //this.gameObject.transform.localScale = this.gameObject.transform.localScale * gameManager.size;
         }

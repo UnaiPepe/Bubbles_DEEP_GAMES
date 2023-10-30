@@ -52,7 +52,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(can_press == false)
+
+        if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
+        {
+
+            SceneManager.LoadScene("4_YouWon"); //LOAD WIN
+        }
+
+        if (can_press == false)
         {
             check_timer += Time.deltaTime;
             can_press = false;
@@ -97,14 +104,14 @@ public class GameManager : MonoBehaviour
         {
             resting_timer += Time.deltaTime;
 
-            if (resting_timer >= 3f && resting_timer < 5f)
+            if (resting_timer >= 1f && resting_timer < 3f)
             {
                 progress = 0.15f;
                 size = 1.1f;
                 SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 0.5f, 1f * Time.deltaTime);
             }
 
-            if (resting_timer >= 5f)
+            if (resting_timer >= 3f)
             {
                 progress = 0.25f;
                 size = 1.25f;
@@ -143,7 +150,7 @@ public class GameManager : MonoBehaviour
                         if (progress <= 0)
                         {
                             SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 0.1f, 0.5f * Time.deltaTime);
-                            progress = 0.05f;
+                            progress = 0.01f;
                         }
 
                         else if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
@@ -153,19 +160,23 @@ public class GameManager : MonoBehaviour
                         }
                        
                         Grow();
+                        
                     }
                     else if (buble.GetComponent<Bubbles>().white == false)
                     {
-                        progress += 0.1f;   //TWEAK AND PLAY WITH THIS. BASE WAS += 0.1f;
+                        progress += 0.05f;   //TWEAK AND PLAY WITH THIS. BASE WAS += 0.1f;
                         size = 1.1f;
                         rarity += 0.1f;
+                        
                     }
                     
                     Destroy(buble);
                 }
-            }
-            buble.GetComponent<Bubbles>().UpdateSize();
 
+               
+            }
+
+            buble.GetComponent<Bubbles>().UpdateSize();
         }
     }
 
