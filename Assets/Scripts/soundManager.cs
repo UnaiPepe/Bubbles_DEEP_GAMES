@@ -11,9 +11,10 @@ public class soundManager : MonoBehaviour
     public AudioSource button_click;
     public AudioSource normal_bubble_pop;
     public AudioSource black_bubble_pop;
-    public AudioSource hands_animation;
+    public AudioSource hands_animation_inhale;
+    public AudioSource hands_animation_exhale;
 
-   [Header("Anything longer than 10 seconds")]
+    [Header("Anything longer than 10 seconds")]
 
     public AudioSource hands_brown_noise;
     public AudioSource game_soundrack;
@@ -55,12 +56,17 @@ public class soundManager : MonoBehaviour
         black_bubble_pop.Play();
     }
 
-    public void HandsAnimation()
+    public void HandsAnimationInhale()
     {
-        hands_animation.Play();
+        hands_animation_inhale.Play();
     }
 
-    public void Level_Ost()
+    public void HandsAnimationExhale()
+    {
+        hands_animation_exhale.Play();
+    }
+
+    public void Brown_Noise()
     {
         hands_brown_noise.Play();
         //Aquí detectamos qué nivel es y ponemos su ost.

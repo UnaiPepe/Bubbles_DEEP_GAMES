@@ -648,6 +648,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 519362865277958490, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603166386943382717, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603166386943382717, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
+      propertyPath: Priority
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6603166387125749096, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
       propertyPath: Priority
       value: 152
@@ -704,11 +716,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6603166388474876136, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
+      propertyPath: m_Name
+      value: HandsAnimation(exhale)-
+      objectReference: {fileID: 0}
     - target: {fileID: 6603166388520767778, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 971fcab83c1bf5649b8efe6beaf4fa2b, type: 3}
 --- !u!1 &1534270758
 GameObject:

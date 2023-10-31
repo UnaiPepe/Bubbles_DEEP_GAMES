@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
                     if(buble.GetComponent<Bubbles>().white == true)
                     {
                         size = 0.85f;
+                        SoundManager.WhiteBubblePop();
                         SoundManager.game_soundrack.volume = SoundManager.game_soundrack.volume * 0.75f;
                         progress -= 0.10f;  //TWEAK AND PLAY WITH THIS. BASE WAS -= 0.15f;
                         if (progress <= 0)
@@ -164,6 +165,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if (buble.GetComponent<Bubbles>().white == false)
                     {
+                        SoundManager.BlackBubblePop();
                         progress += 0.05f;   //TWEAK AND PLAY WITH THIS. BASE WAS += 0.1f;
                         size = 1.1f;
                         rarity += 0.1f;
