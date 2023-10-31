@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         if (Bar.transform.localScale.x >= 1f) //IF PROGRESS BAR HAS REACHED 1 IN SCALE VALUE
         {
-
+            SoundManager.hands_animation_inhale.volume = 0;
             SceneManager.LoadScene("4_YouWon"); //LOAD WIN
         }
 
