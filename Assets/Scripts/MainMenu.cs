@@ -9,9 +9,13 @@ public class MainMenu : MonoBehaviour
     private int levelToLoad;
     public soundManager sm;
 
+    private void Start()
+    {
+        sm = FindObjectOfType<soundManager>();
+    }
     public void PlayGame(int levelIndex)
     {
-        
+        sm.hands_animation_inhale.volume = 1;
         SceneManager.LoadScene("2_Tutorial");
         sm.ButtonClick();
     }   

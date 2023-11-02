@@ -1439,6 +1439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer_text: {fileID: 1803200057}
+  sm: {fileID: 0}
   timer: 60
 --- !u!4 &2020050292
 Transform:
