@@ -37,7 +37,11 @@ public class GameManager : MonoBehaviour
     public bool isResting = false;
     public float Time_to_rest = 5f;
     public float resting_timer = 0f;
-    
+    public GameObject buble1;
+    public GameObject buble2;
+    public GameObject buble3;
+
+
 
     private void Start()
     {
@@ -84,28 +88,32 @@ public class GameManager : MonoBehaviour
         if (progress > 0.05f && progress <= 0.2f) //First Alpha Reduction
         {
             Color colorActual = white_background.color;
-            float nuevoAlpha = Mathf.Lerp(colorActual.a, 20, 1f * Time.deltaTime);
+            float nuevoAlpha = Mathf.Lerp(colorActual.a, 20, 3f * Time.deltaTime);
             Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, nuevoAlpha);
             white_background.color = nuevoColor;
-            Debug.Log("REDUCED ALPHA 1");
         }
 
         if (progress <= 0.05f) //Second Alpha Reduction
         {
             Color colorActual = white_background.color;
-            float nuevoAlpha = Mathf.Lerp(colorActual.a, 0, 1f * Time.deltaTime);
+            float nuevoAlpha = Mathf.Lerp(colorActual.a, 0, 3f * Time.deltaTime);
             Color nuevoColor = new Color(colorActual.r, colorActual.g, colorActual.b, nuevoAlpha);
             white_background.color = nuevoColor;
 
-            Debug.Log("REDUCED ALPHA 2");
         }
 
         if(isResting)
         {
             resting_timer += Time.deltaTime;
 
+            if(resting_timer >= 0.5F && resting_timer <1f)
+            {
+                buble1.SetActive(true);
+            }
+
             if (resting_timer >= 1f && resting_timer < 3f)
             {
+                buble2.SetActive(true);
                 progress = 0.15f;
                 size = 1.1f;
                 SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 0.5f, 1f * Time.deltaTime);
@@ -115,8 +123,18 @@ public class GameManager : MonoBehaviour
             {
                 progress = 0.25f;
                 size = 1.25f;
+                buble3.SetActive(true);
                 SoundManager.game_soundrack.volume = Mathf.Lerp(SoundManager.game_soundrack.volume, 1f, 1f * Time.deltaTime);
             }
+        }
+
+        if(isResting == false)
+        {
+            buble1.SetActive(false);
+            buble2.SetActive(false);
+            buble3.SetActive(false);
+
+            resting_timer = 0f;
         }
 
 
@@ -187,6 +205,7 @@ public class GameManager : MonoBehaviour
 
         Vector3 newScale = Bar.transform.localScale;
         newScale.x += progress;
+        newScale.y += progress;
         Bar.transform.localScale = newScale;
     }
 

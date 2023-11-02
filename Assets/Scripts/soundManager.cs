@@ -58,11 +58,13 @@ public class soundManager : MonoBehaviour
 
     public void HandsAnimationInhale()
     {
+        hands_animation_inhale.volume = 1f;
         hands_animation_inhale.Play();
     }
 
     public void HandsAnimationExhale()
     {
+        hands_animation_exhale.volume = 1f;
         hands_animation_exhale.Play();
     }
 

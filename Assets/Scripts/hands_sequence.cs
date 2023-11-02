@@ -14,8 +14,8 @@ public class hands_sequence : MonoBehaviour
     {
         GameManager = GameObject.Find("GameManager");
         sm = FindObjectOfType<soundManager>();
-        sm.Brown_Noise();
         sm.hands_brown_noise.volume = 0;
+        sm.Brown_Noise();
     }
     // Update is called once per frame
     void Update()
@@ -33,12 +33,11 @@ public class hands_sequence : MonoBehaviour
             
         }
         else
-        {   
+        {
             // ^^^^^^^^^^^^^^^
-            sm.HandsAnimationInhale(); 
+            sm.HandsAnimationInhale();
             buttonPress = false;
             GameManager.GetComponent<GameManager>().isResting = false;
-            GameManager.GetComponent<GameManager>().resting_timer = 0f;
             canvas_UI.GetComponent<Canvas>().enabled = true;
 
         }
@@ -46,11 +45,11 @@ public class hands_sequence : MonoBehaviour
         if (buttonPress == true)
         {
             anim.SetBool("animGo", true);
-            
-            
+
+
             if (sm.hands_brown_noise.volume != 0.5f)
             {
-                sm.hands_brown_noise.volume = Mathf.Lerp(sm.hands_brown_noise.volume, 0.5f, 2f * Time.deltaTime);
+                sm.hands_brown_noise.volume = Mathf.Lerp(sm.hands_brown_noise.volume, 0.25f, 2f * Time.deltaTime);
             }
         }
         else
